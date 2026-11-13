@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.board.dao.BoardDao">
+ <select id="selectAll" resultType="Board">SELECT id,title,writer,content,view_cnt,reg_date FROM board ORDER BY id DESC</select>
+ <select id="selectOne" resultType="Board">SELECT id,title,writer,content,view_cnt,reg_date FROM board WHERE id=#{id}</select>
+ <update id="updateViewCnt">UPDATE board SET view_cnt=view_cnt+1 WHERE id=#{id}</update>
+ <insert id="insertBoard" useGeneratedKeys="true" keyProperty="id">INSERT INTO board(title,writer,content) VALUES(#{title},#{writer},#{content})</insert>
+ <update id="updateBoard">
+ UPDATE board <set>
+ <if test="title != null">title=#{title},</if>
+ <if test="content != null">content=#{content},</if>
+ id=id
+ </set> WHERE id=#{id}
+ </update>
+ <delete id="deleteBoard">DELETE FROM board WHERE id=#{id}</delete>
+</mapper>

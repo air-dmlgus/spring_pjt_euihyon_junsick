@@ -1,0 +1,21 @@
+### 목록
+GET http://localhost:8080/api/board
+Accept: application/json
+
+### 등록 (응답의 id를 아래 1 대신 사용)
+POST http://localhost:8080/api/board
+Content-Type: application/json
+
+{"title":"첫 글","writer":"의현","content":"REST API 연습"}
+
+### 상세 (조회수 증가)
+GET http://localhost:8080/api/board/1
+
+### 수정 (200 빈 본문)
+PUT http://localhost:8080/api/board/1
+Content-Type: application/json
+
+{"title":"수정 제목","content":"수정 내용"}
+
+### 삭제 (204 빈 본문)
+DELETE http://localhost:8080/api/board/1

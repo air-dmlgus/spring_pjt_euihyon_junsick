@@ -1,0 +1,14 @@
+services:
+  mysql:
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: ssafy_board
+      MYSQL_USER: ssafy
+      MYSQL_PASSWORD: ssafy
+      MYSQL_ROOT_PASSWORD: local-root-password
+    ports:
+      - "3306:3306"
+    volumes:
+      - board-db:/var/lib/mysql
+volumes:
+  board-db:
